@@ -18,8 +18,7 @@ public class UserVo {
 		
 	}
 	
-	
-	
+
 	public UserVo(String id, String password, String name, String gender) {
 		this.id = id;
 		this.password = password;
