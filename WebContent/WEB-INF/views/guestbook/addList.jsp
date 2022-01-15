@@ -1,14 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
-<%@ page import="java.util.List" %>
-<%@ page import="com.javaex.vo.GuestbookVo" %>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<% 
-
-	List<GuestbookVo> guestList = (List<GuestbookVo>) request.getAttribute("gList");
-
-%>
 
 <!DOCTYPE html>
 <html>
@@ -24,35 +18,8 @@
 <body>
 	<div id="wrap">
 
-		<div id="header" class="clearfix">
-			<h1>
-				<a href="">MySite</a>
-			</h1>
+		<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 
-			<!-- 
-			<ul>
-				<li>황일영 님 안녕하세요^^</li>
-				<li><a href="" class="btn_s">로그아웃</a></li>
-				<li><a href="" class="btn_s">회원정보수정</a></li>
-			</ul>
-			-->	
-			<ul>
-				<li><a href="" class="btn_s">로그인</a></li>
-				<li><a href="" class="btn_s">회원가입</a></li>
-			</ul>
-			
-		</div>
-		<!-- //header -->
-
-		<div id="nav">
-			<ul class="clearfix">
-				<li><a href="">입사지원서</a></li>
-				<li><a href="">게시판</a></li>
-				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
-			</ul>
-		</div>
-		<!-- //nav -->
 	
 		<div id="container" class="clearfix">
 			<div id="aside">
@@ -79,7 +46,7 @@
 				<!-- //content-head -->
 
 				<div id="guestbook">
-					<form action="" method="">
+					<form action="/mysite/guestbook" method="get">
 						<table id="guestAdd">
 							<colgroup>
 								<col style="width: 70px;">
@@ -108,43 +75,33 @@
 						
 					</form>	
 					
-					<table class="guestRead">
-						<colgroup>
-							<col style="width: 10%;">
-							<col style="width: 40%;">
-							<col style="width: 40%;">
-							<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>
-					<!-- //guestRead -->
 					
-					<table class="guestRead">
-						<colgroup>
-								<col style="width: 10%;">
-								<col style="width: 40%;">
-								<col style="width: 40%;">
-								<col style="width: 10%;">
-						</colgroup>
-						<tr>
-							<td>1234555</td>
-							<td>이정재</td>
-							<td>2020-03-03 12:12:12</td>
-							<td><a href="">[삭제]</a></td>
-						</tr>
-						<tr>
-							<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
-						</tr>
-					</table>	
-					<!-- //guestRead -->
+					
+					
+					<c:forEach items="${guestList}" var="guestVo">
+						<table class="guestRead">
+							<colgroup>
+									<col style="width: 10%;">
+									<col style="width: 40%;">
+									<col style="width: 40%;">
+									<col style="width: 10%;">
+							</colgroup>
+							<tr>
+									<td>${guestVo.no}</td>
+									<td>${guestVo.name}</td>
+									<td>${guestVo.regDate}</td>
+									<td><a href="/mysite/guestbook?action=deleteForm&no=${guestVo.no}">[삭제]</a></td>
+							</tr>
+							<tr>
+									<td colspan=4 class="text-left">방명록 글입니다. 방명록 글입니다.</td>
+							</tr>
+						</table>
+					
+					
+					</c:forEach>
+					
+					
+					
 					
 				</div>
 				<!-- //guestbook -->
@@ -154,9 +111,8 @@
 		</div>
 		<!-- //container  -->
 
-		<div id="footer">
-			Copyright ⓒ 2020 황일영. All right reserved
-		</div>
+		<!-- footer 있던 자리-->
+		<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 		<!-- //footer -->
 	</div>
 	<!-- //wrap -->
