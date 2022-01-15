@@ -76,7 +76,7 @@ public class UserController extends HttpServlet {
 				
 				WebUtil.redirect(request, response, "/mysite/user?action=loginForm&result=fail");
 				
-			}else { //로그인 성공 
+			}else {  
 				System.out.println("로그인 성공");
 				
 				HttpSession session = request.getSession(); //문법 
