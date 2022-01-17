@@ -114,32 +114,32 @@ public class UserDao {
 		
 		try {
 			
-			String query ="";
-			query += " select    no, ";
-			query += " 			name ";
-			query += " from users ";
-			query += " where id = ? ";
-			query += " and password = ? ";
-			
-			//쿼리문
-			pstmt = conn.prepareStatement(query);
-			
-			//바인딩
-			pstmt.setString(1, id);
-			pstmt.setString(2, password);
-			
-			//실행 
-			rs = pstmt.executeQuery();
-			
-			//결과처리
-			while(rs.next()) {
+				String query ="";
+				query += " select    no, ";
+				query += " 			name ";
+				query += " from users ";
+				query += " where id = ? ";
+				query += " and password = ? ";
 				
-				int no = rs.getInt("no");
-				String name = rs.getString("name");
+				//쿼리문
+				pstmt = conn.prepareStatement(query);
 				
-				userVo = new UserVo();
-				userVo.setNo(no);
-				userVo.setName(name);
+				//바인딩
+				pstmt.setString(1, id);
+				pstmt.setString(2, password);
+				
+				//실행 
+				rs = pstmt.executeQuery();
+				
+				//결과처리
+				while(rs.next()) {
+					
+					int no = rs.getInt("no");
+					String name = rs.getString("name");
+					
+					userVo = new UserVo();
+					userVo.setNo(no);
+					userVo.setName(name);
 			}
 			
 		} catch (SQLException e) {

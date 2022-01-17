@@ -12,7 +12,6 @@ public class UserVo {
 	
 	
 	
-	
 	//생성자
 	public UserVo() {
 		
